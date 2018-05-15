@@ -3,7 +3,7 @@
 using namespace std;
 namespace myStd
 {
-	Bitmap::Bitmap(int width, int height): m_width(width), m_height(height)
+	Bitmap::Bitmap(int width, int height): m_width(width), m_height(height), m_pPixels(new uint8_t[width * height * 3]) // times 3 cz uint8_t
 	{
 	
 	}

@@ -6,6 +6,7 @@
 
 #include<cstdint>
 #include<string>
+#include<memory>
 using namespace std;
 
 namespace myStd
@@ -15,6 +16,8 @@ namespace myStd
 		private:
 			int m_width{0};
 			int m_height{0};
+	// unsigned char is equivalent to uint8_t in C
+		unique_ptr<uint8_t[]>m_pPixels{nullptr}; // c++11 is giving me the freedom of initialization
 		public:	
 			Bitmap(int width, int height);
 			bool write(string filename); 
