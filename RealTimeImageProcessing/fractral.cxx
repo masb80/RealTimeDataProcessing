@@ -1,12 +1,12 @@
 #include<iostream>
-#include"BitmapFileHeader.h"
-#include"BitmapInfoHeader.h"
-
+#include"Bitmap.h"
 using namespace std;
 using namespace myStd;
 
 int main()
 {
-	cout << "initial success " << endl;
+	Bitmap bitmap(800,600);
+	bitmap.write("fractral.bmp");
+	cout << "Compile success " << endl;
 	return 0;
 }
