@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/fractral.dir/home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/fractral.cxx.o CMakeFiles/fractral.dir/home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/Bitmap.cxx.o CMakeFiles/fractral.dir/home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/Mandelbrot.cxx.o  -o fractral 
