@@ -35,6 +35,10 @@ cstdint
 /home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/Mandelbrot.cxx
 fstream
 -
+cmath
+-
+complex
+-
 Mandelbrot.h
 /home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/Mandelbrot.h
 
@@ -51,4 +55,6 @@ iostream
 -
 Bitmap.h
 /home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/Bitmap.h
+Mandelbrot.h
+/home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/Mandelbrot.h
 

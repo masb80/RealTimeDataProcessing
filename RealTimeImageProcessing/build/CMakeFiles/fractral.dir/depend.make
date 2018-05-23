@@ -10,5 +10,6 @@ CMakeFiles/fractral.dir/home/samad/practiceC++/udemy/tuorial2/project/RealTimeIm
 CMakeFiles/fractral.dir/home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/Mandelbrot.cxx.o: /home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/Mandelbrot.h
 
 CMakeFiles/fractral.dir/home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/fractral.cxx.o: /home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/Bitmap.h
+CMakeFiles/fractral.dir/home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/fractral.cxx.o: /home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/Mandelbrot.h
 CMakeFiles/fractral.dir/home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/fractral.cxx.o: /home/samad/practiceC++/udemy/tuorial2/project/RealTimeImageProcessing/fractral.cxx
 

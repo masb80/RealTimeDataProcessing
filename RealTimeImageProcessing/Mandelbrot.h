@@ -11,10 +11,13 @@ using namespace std;
 
 namespace myStd
 {	
-	class Mendalbrot
+	class Mandelbrot
 	{
-		private:
+		public:
+			static const int MAX_ITERATIONS = 1000;
+			
 		public:	
+			  int getIteration(double x, double y);
 	};
 }
 
