@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11  -rdynamic CMakeFiles/kalman.dir/Kalman.cxx.o CMakeFiles/kalman.dir/main.cxx.o  -o kalman 
