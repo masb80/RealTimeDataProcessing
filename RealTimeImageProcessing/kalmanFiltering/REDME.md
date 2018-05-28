@@ -1,4 +1,4 @@
-Kalman Filetering class. Here main is a example for testing purpose
+Kalman Filetering class. Here main.cxx is a example for testing purpose
 
 To compile :
 1) mkdir build
