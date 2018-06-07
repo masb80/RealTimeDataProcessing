@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( redObjectTracker )
+find_package( OpenCV REQUIRED )
+add_executable(redObjectTracker redObjectTracker.cxx)
+target_link_libraries(redObjectTracker  ${OpenCV_LIBS} )
