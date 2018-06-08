@@ -21,6 +21,12 @@ int main(int argc, char** argv)
 	cvCreateTrackbar("LowH","Color_Control", &iLowH, 179);
 	cvCreateTrackbar("HighH","Color_Control", &iHighH, 179);
 	
+	cvCreateTrackbar("LowS","Color_Control", &iLowS, 255);
+	cvCreateTrackbar("HighS","Color_Control", &iHighS, 255);
+	
+	cvCreateTrackbar("LowV","Color_Control", &iLowV, 255);
+	cvCreateTrackbar("HighHV","Color_Control", &iHighV, 255);
+	
 	VideoCapture cap(0);
 	if(!cap.isOpened())
 	{
@@ -37,12 +43,13 @@ int main(int argc, char** argv)
 		Mat imageOriginal;
 		
 		bool newFrameFromWindow = cap.read(imageOriginal);
+		imshow("Original image", imageOriginal);
 		if(!newFrameFromWindow)
 		{
 			cout << "Can not read frame from video" << endl;
 		}
 		
-		cout <<"image original" << imageOriginal.size() << endl;
+		//cout <<"image original" << imageOriginal.size() << endl;
 	
 		// Conver BGR to HSV
 		Mat imageHSV;
@@ -51,8 +58,14 @@ int main(int argc, char** argv)
 		// image HSV format thresholded
 		Mat imageThresholded;
 		inRange(imageHSV, Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), imageThresholded);
-		cout <<"image Thresolded" << imageThresholded.size() << endl;
-		// 
+		//cout <<"image Thresolded" << imageThresholded.size() << endl;
+		// untill morphological threshold nothing come in thresholded window 
+		erode(imageThresholded, imageThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5,5)));	
+		dilate(imageThresholded, imageThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5,5)));	
+		dilate(imageThresholded, imageThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5,5)));	
+		erode(imageThresholded, imageThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5,5)));	
+		imshow("Thresholded image", imageThresholded);
+		
 		if(waitKey(30)==27)
 		{
 			cout << "esc key pressed" << endl;
