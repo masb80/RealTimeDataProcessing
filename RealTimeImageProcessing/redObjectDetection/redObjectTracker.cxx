@@ -20,8 +20,6 @@ int main(int argc, char** argv)
 	
 	cvCreateTrackbar("LowH","Color_Control", &iLowH, 179);
 	cvCreateTrackbar("HighH","Color_Control", &iHighH, 179);
-
-
 	
 	VideoCapture cap(0);
 	if(!cap.isOpened())
@@ -30,14 +28,13 @@ int main(int argc, char** argv)
 		return -1;
 	}
 	Mat imgTemp;
-	//cap.read(imgTemp); // start a video temporary
+	cap.read(imgTemp); // start a video temporary
 
 	cout << "initial successfull" << endl;
-
-	while(true) // eventing start
+	bool eventStart = true;
+	while(eventStart) // eventing start
 	{
 		Mat imageOriginal;
-		
 		
 		bool newFrameFromWindow = cap.read(imageOriginal);
 		if(!newFrameFromWindow)
@@ -45,8 +42,17 @@ int main(int argc, char** argv)
 			cout << "Can not read frame from video" << endl;
 		}
 		
-		cout << imageOriginal.size() << endl;
+		cout <<"image original" << imageOriginal.size() << endl;
+	
+		// Conver BGR to HSV
+		Mat imageHSV;
+		cvtColor(imageOriginal, imageHSV, COLOR_BGR2HSV);
 		
+		// image HSV format thresholded
+		Mat imageThresholded;
+		inRange(imageHSV, Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), imageThresholded);
+		cout <<"image Thresolded" << imageThresholded.size() << endl;
+		// 
 		if(waitKey(30)==27)
 		{
 			cout << "esc key pressed" << endl;
