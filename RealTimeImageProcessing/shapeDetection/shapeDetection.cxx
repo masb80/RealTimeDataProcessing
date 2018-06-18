@@ -11,7 +11,7 @@ int main(int argc, char** argv)
 	
 	cout << "initial successfull" << endl;
 	// Read the image file
-	IplImage* image = cvLoadImage("samad.jpg");
+	IplImage* image = cvLoadImage("finding_shapes_mask.png");
 	//original image
 	cvShowImage("Shape detection original", image);
 	// converting the original image into grayscale
@@ -46,25 +46,65 @@ int main(int argc, char** argv)
 			cvLine(image, *pt[1], *pt[2], cvScalar(255,0,0),4);
 			cvLine(image, *pt[2], *pt[0], cvScalar(255,0,0),4);
 		}
-		
-	}
-	cvNamedWindow("Tracked");
-	cvShowImage("Tracked", image);
+		// for quadrilateral
+		else if(result->total == 4)
+		{
+		// iterate through each point
+			CvPoint *pt[4];
+			for(int i =0; i < 4; i++)
+			{
+				pt[i] = (CvPoint*)cvGetSeqElem(result,i);
+			}
+			// drawing the line arround the triangle
+			cvLine(image, *pt[0], *pt[1], cvScalar(255,0,0),4);
+			cvLine(image, *pt[1], *pt[2], cvScalar(255,0,0),4);
+			cvLine(image, *pt[2], *pt[3], cvScalar(255,0,0),4);
+			cvLine(image, *pt[3], *pt[0], cvScalar(255,0,0),4);
+		}
+		else if(result->total == 6)
+		{
+		// iterate through each point
+			CvPoint *pt[6];
+			for(int i =0; i < 6; i++)
+			{
+				pt[i] = (CvPoint*)cvGetSeqElem(result,i);
+			}
+			// drawing the line arround the triangle
+			cvLine(image, *pt[0], *pt[1], cvScalar(255,0,0),4);
+			cvLine(image, *pt[1], *pt[2], cvScalar(255,0,0),4);
+			cvLine(image, *pt[2], *pt[3], cvScalar(255,0,0),4);
+			cvLine(image, *pt[3], *pt[4], cvScalar(255,0,0),4);
+			cvLine(image, *pt[4], *pt[5], cvScalar(255,0,0),4);
+			cvLine(image, *pt[5], *pt[0], cvScalar(255,0,0),4);
+			//cvLine(image, *pt[6], *pt[0], cvScalar(255,0,0),4);
+		}
+		else if(result->total == 10)
+		{
+		// iterate through each point
+			CvPoint *pt[10];
+			for(int i =0; i < 10; i++)
+			{
+				pt[i] = (CvPoint*)cvGetSeqElem(result,i);
+			}
+			// drawing the line arround the triangle
+			cvLine(image, *pt[0], *pt[1], cvScalar(0,0,255),4);
+			cvLine(image, *pt[1], *pt[2], cvScalar(0,0,255),4);
+			cvLine(image, *pt[2], *pt[3], cvScalar(0,0,255),4);
+			cvLine(image, *pt[3], *pt[4], cvScalar(0,0,255),4);
+			cvLine(image, *pt[4], *pt[5], cvScalar(0,0,255),4);
+			cvLine(image, *pt[5], *pt[6], cvScalar(0,0,255),4);
+			cvLine(image, *pt[6], *pt[7], cvScalar(0,0,255),4);
+			cvLine(image, *pt[7], *pt[8], cvScalar(0,0,255),4);
+			cvLine(image, *pt[8], *pt[9], cvScalar(0,0,255),4);
+			cvLine(image, *pt[9], *pt[0], cvScalar(0,0,255),4);
+		}
+		contours = contours->h_next;	
+	}	
+	cvNamedWindow("Shape Detected");
+	cvShowImage("Shape Detected", image);
 	
 	cvWaitKey(0); // wait for key press
-
-	/*
-	bool eventStart = true;
-	while(eventStart) // eventing start
-	{
-
-		if(waitKey(30)==27)
-		{
-			cout << "esc key pressed" << endl;
-			break;
-		}
-	}
-	*/
+	
 	// clean up the memory
 	cvDestroyAllWindows();
 	cvReleaseMemStorage(&storage);
